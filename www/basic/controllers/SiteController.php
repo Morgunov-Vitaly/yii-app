@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\OpenExchangeRatesClient;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,6 +62,19 @@ class SiteController extends Controller
     public function actionIndex(): string
     {
         return $this->render('index');
+    }
+
+    public function actionLatestRates(): Response
+    {
+        /** @var OpenExchangeRatesClient $client */
+        $client = Yii::$app->openExchangeRatesClient;
+        $exchangeRates = $client->fetchLatestRates();
+
+        return $this->asJson([
+            'base' => $exchangeRates->base,
+            'timestamp' => $exchangeRates->timestamp,
+            'rates' => $exchangeRates->rates,
+        ]);
     }
 
     /**

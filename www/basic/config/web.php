@@ -50,6 +50,10 @@ $config = [
             ],
         ],
         */
+        'openExchangeRatesClient' => [
+            'class' => 'app\components\OpenExchangeRatesClient',
+            'appId' => 'cb960b2e41c54d11b43a6bf9263aa557', // Сюда подставь свой API ключ
+        ],
     ],
     'params' => $params,
 ];
