@@ -1,5 +1,7 @@
 <?php
 
+use yii\symfonymailer\Mailer;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -27,7 +29,7 @@ $config = [
             'errorAction' => 'site/error',
         ],
         'mailer' => [
-            'class' => \yii\symfonymailer\Mailer::class,
+            'class' => Mailer::class,
             'viewPath' => '@app/mail',
             // send all mails to a file by default.
             'useFileTransport' => true,
@@ -50,6 +52,10 @@ $config = [
             ],
         ],
         */
+        'openExchangeRatesClient' => [
+            'class' => 'app\components\OpenExchangeRatesClient',
+            'appId' => 'cb960b2e41c54d11b43a6bf9263aa557', // Сюда подставь свой API ключ
+        ],
     ],
     'params' => $params,
 ];
