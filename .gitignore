@@ -27,3 +27,4 @@ composer.phar
 .DS_Store
 /www/.composer/
 /www/.bash_history
+/postgresql-data/
